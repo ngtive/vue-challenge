@@ -1,6 +1,5 @@
 <script setup>
-import MovieCard from '../components/MovieCard.vue'
-import { ref, onMounted, reactive } from 'vue'
+import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { useRoute } from 'vue-router'
 
@@ -8,7 +7,7 @@ const movie = ref([])
 const route = useRoute()
 
 async function getMovie() {
-  const movieResponse = await axios
+  await axios
     .get(`https://api.themoviedb.org/3/movie/${route.params.movie}?language=en-US`, {
       headers: {
         Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMGQ1MDQzNDY2NzQzOWJlYTExMGUwNDMyNzNlNWE2MCIsInN1YiI6IjY2MGU0ZTk5OTVjZTI0MDE3ZDZmZTU5MyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qQrXiXFcqg9HbP7WbBs7pRmWjES4wG5H1ztfPgtedLQ`

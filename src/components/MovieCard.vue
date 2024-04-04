@@ -1,10 +1,11 @@
 <script setup>
-const props = defineProps(['detail'])
+defineProps(['detail'])
 </script>
 
 <template>
   <div style="cursor: pointer" @click="$router.push({ path: `${detail.id}` })">
     <img
+      alt="Movie poster"
       :src="`https://image.tmdb.org/t/p/w400/${detail.poster_path}`"
       style="position: relative"
     />

@@ -1,6 +1,6 @@
 <script setup>
 import MovieCard from '../components/MovieCard.vue'
-import { ref, onMounted, reactive, watch } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import axios from 'axios'
 
 const movies = ref([])
@@ -8,7 +8,7 @@ const search = ref('')
 const pageTitle = ref('Most popular movies')
 
 async function getMoviesList() {
-  const moviesResponse = await axios
+  await axios
     .get(
       'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc',
       {
@@ -43,7 +43,7 @@ async function getSearchedMoviesList(query) {
     language: 'en-US',
     include_adult: 'false'
   }
-  const moviesResponse = await axios
+  await axios
     .get(`https://api.themoviedb.org/3/search/movie`, {
       params,
       headers: {
@@ -69,7 +69,7 @@ async function getSearchedMoviesList(query) {
     </div>
     <div class="text-white text-xl text-center">{{ pageTitle }}</div>
     <div class="grid grid-cols-5 align-center mt-6 gap-10">
-      <MovieCard v-for="movie in movies" :detail="movie" />
+      <MovieCard v-for="movie in movies" :detail="movie" :key="`movie-card-${movie.id}`" />
     </div>
   </main>
 </template>
