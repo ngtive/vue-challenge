@@ -1,0 +1,13 @@
+@import './base.css';
+
+body,
+html {
+  background-image: linear-gradient(to right, black, #172525);
+}
+
+#app {
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+}
